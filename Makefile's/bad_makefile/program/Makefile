@@ -8,7 +8,7 @@ BIN:= calculator
 all: $(BIN)
 
 $(BIN): $(CFILES)
-	$(CC) $(Flags) -o $@ $^
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ $^
 
 clean:
 	$(RM) $(BIN) 
