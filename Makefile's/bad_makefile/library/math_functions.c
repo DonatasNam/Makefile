@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 extern float add(float a, float b)
 {
 	float sum = a + b;

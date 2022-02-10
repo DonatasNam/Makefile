@@ -1,13 +1,18 @@
+exec:= program
 BIN:= main.o maths.o usage.o
 BIN_SRC:= main.c maths.c usage.c
-HEAD:= maths.h usage.h
-PREF:= ./no_makefile
-LD_LIBRARY_PATH=`pwd`./usage.h `pwd`./maths.h
+CFLAGS:= -Wall
+CPPFLAGS= -I.
+LDFLAGS= -L.
+
 .PHONY: all clean
-all: $(BIN)
+all: $(exec)
+
+$(exec):$(BIN)
+	$(CC) $(CFLAGS) -o $@ $^ 
 
 $(BIN):$(BIN_SRC)
-	$(CC) -I. -L. -Wall -o $@ $^ -l_prog
+	$(CC) $(LDFLAGS) $(CPPFLAGS) $(CFLAGS) -c $^ -libfile_reader
 
 clean:
-	$(RM) $(BIN)
+	$(RM) $(BIN) $(exec)

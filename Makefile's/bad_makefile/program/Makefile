@@ -1,12 +1,14 @@
-compiler:=gcc
-Flags:= -I. -L. -Wall -Ipwd
-OBJS:=main.o math_functions.o
+CPPFLAGS:= -I.
+CFLAGS:= -Wall -Ipwd
 CFILES:= math_functions.c main.c
 BIN:= calculator
+
+.PHONY: all clean
+
 all: $(BIN)
 
 $(BIN): $(CFILES)
-	$(compiler) $(Flags) -o $@ $^
+	$(CC) $(Flags) -o $@ $^
 
 clean:
-	rm -f $(BIN) $(OBJS)
+	$(RM) $(BIN) 

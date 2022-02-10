@@ -1,4 +1,4 @@
-LIB:= main.o file_reader.o
+LIB:= libfile_reader.so
 LIB_SRC:= main.c file_reader.c
 LIB_INC:= file_reader.h
 .PHONY: all clean 

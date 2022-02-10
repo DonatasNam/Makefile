@@ -1,8 +1,7 @@
 CC:=gcc
-CFLAGS:= -I. -fpic -shared -Wall
-LIB:=calculator.so
+CFLAGS:= -fpic -shared -Wall
+LIB:=libcalculator.so
 CFILES:= math_functions.c
-PREFIX:= /`pwd`
 .PHONY: all install uninstall clean
 all: $(LIB)
 
@@ -10,11 +9,10 @@ $(LIB):$(CFILES)
 	$(CC) $(CFLAGS) -o $@ $^
 
 install: $(LIB)
-	install -d $(DESTDIR) $(PREFIX)/include
-	install -m 644 math_functions.h $(DESTDIR)/$(PREFIX)/include
-
+	install -m 644 math_functions.h /usr/include
+	install -m 644 libcalculator.so /usr/lib
 uninstall:
-	$(RM) $(DESTDIR)/$(PREFIX)/include/math_functions.h
-
+	$(RM) /usr/include/math_functions.h
+	$(RM) /usr/lib/libcalculator.so
 clean: 
-	rm -f $(LIB) math_functions.o
+	$(RM) $(LIB) 
